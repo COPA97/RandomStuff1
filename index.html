@@ -22,7 +22,7 @@
   <script src="https://okumura.herokuapp.com/socket.io/socket.io.js"></script>
   <script>
       console.log('connecting...');
-      var socket = io();
+      var socket = io("https://okumura.herokuapp.com:12116");
       socket.on('time', function(timeString) {
            console.log( 'Server time: ' + timeString) ;
       });
