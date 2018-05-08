@@ -20,11 +20,17 @@
     </form>
   </body>
   <script src="https://okumura.herokuapp.com/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
       console.log('connecting...');
       var socket = io('https://okumura.herokuapp.com');
-      socket.on('time', function(timeString) {
-           console.log( 'Server time: ' + timeString) ;
+      $('form').submit(function(){
+         socket.emit('chat message', $('#m').val());
+         $('#m').val('');
+         return false;
+      });
+      socket.on('chat message', function(msg){
+         $('#messages').append($('<li>').text(msg));
       });
       
   </script>
