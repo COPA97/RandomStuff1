@@ -1,5 +1,5 @@
 {
-    "admin":{
+    "special":{
         "ejectDistance":10000,
         "maxCells":1,
         "maxSize":9999,
@@ -15,7 +15,7 @@
         "decayRate": -0.0001
     }
     ,
-    "special":{
+    "admin":{
         "isUnpopable":1,
         "ignoreBorders":1,
         "startMass": 4000
